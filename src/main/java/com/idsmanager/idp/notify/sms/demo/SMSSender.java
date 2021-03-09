@@ -25,6 +25,7 @@ public class SMSSender extends SmsMsgSender {
     private String smsUrl;
 
     public ApiResult sendMessage(String message, String... phoneNumbers) {
+//        return ApiResult.SUCCESS;
         return new ApiResult(NotifyErrorCode.SEND_UNKNOWN_ERROR, "发送短信失败");
     }
 
