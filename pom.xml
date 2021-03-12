@@ -27,6 +27,13 @@
             <version>4.11.0</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.idsmanager.notify</groupId>
+            <artifactId>notify-api</artifactId>
+            <version>4.11.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
