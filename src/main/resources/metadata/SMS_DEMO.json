@@ -1,0 +1,178 @@
+{
+  "formData": [
+    {
+      "key": "name",
+      "name": {
+        "zh": "网关名称",
+        "en": "Gateway Name"
+      },
+      "type": "input",
+      "readonly": false,
+      "disabled": false,
+      "placeholder": {
+        "zh": "请填写短信网关名称",
+        "en": "Please input SMS Gateway Name"
+      },
+      "description": {
+        "zh": "短信网关名称",
+        "en": "SMS Gateway Name"
+      },
+      "rules": {
+        "required": true,
+        "message": {
+          "zh": "请填写短信网关名称",
+          "en": "Please input SMS Gateway name"
+        },
+        "trigger": "blur"
+      },
+      "show": true,
+      "send": true,
+      "number": null
+    },
+    {
+      "key": "smsUrl",
+      "name": {
+        "zh": "SMS URL",
+        "en": "SMS URL"
+      },
+      "type": "input",
+      "readonly": false,
+      "disabled": false,
+      "placeholder": {
+        "zh": "请填写SMS URL",
+        "en": "Please input SMS Gateway URL"
+      },
+      "description": {
+        "zh": "SMS URL",
+        "en": "SMS URL"
+      },
+      "rules": {
+        "required": true,
+        "message": {
+          "zh": "请填写SMS URL",
+          "en": "Please input SMS Gateway URL"
+        },
+        "trigger": "blur"
+      },
+      "show": true,
+      "send": true,
+      "number": null
+    },
+    {
+      "key": "apiUsername",
+      "name": {
+        "zh": "API账户",
+        "en": "API Username"
+      },
+      "type": "input",
+      "readonly": false,
+      "disabled": false,
+      "placeholder": {
+        "zh": "请填写API账户",
+        "en": "Please input SMS Gateway API username"
+      },
+      "description": {
+        "zh": "API账户",
+        "en": "API Username"
+      },
+      "rules": {
+        "required": true,
+        "message": {
+          "zh": "请填写API账户",
+          "en": "Please input SMS Gateway API username"
+        },
+        "trigger": "blur"
+      },
+      "show": true,
+      "send": true,
+      "number": null
+    },
+    {
+      "key": "apiPassword",
+      "name": {
+        "zh": "API密码",
+        "en": "API Password"
+      },
+      "type": "password",
+      "readonly": false,
+      "disabled": false,
+      "placeholder": {
+        "zh": "请填写API密码",
+        "en": "Please input SMS Gateway API password"
+      },
+      "description": {
+        "zh": "API密码",
+        "en": "API Password"
+      },
+      "rules": {
+        "required": true,
+        "message": {
+          "zh": "请填写API密码",
+          "en": "Please input SMS Gateway API password"
+        },
+        "trigger": "blur"
+      },
+      "show": true,
+      "send": true,
+      "number": null
+    },
+    {
+      "key": "description",
+      "name": {
+        "zh": "网关描述",
+        "en": "Gateway description"
+      },
+      "type": "input",
+      "readonly": false,
+      "disabled": false,
+      "placeholder": {
+        "zh": "请填写短信网关描述",
+        "en": "Please input SMS Gateway Name"
+      },
+      "description": {
+        "zh": "短信网关描述",
+        "en": "SMS Gateway description"
+      },
+      "rules": {
+        "required": false,
+        "message": {
+          "zh": "请填写短信网关描述",
+          "en": "Please input SMS Gateway description"
+        },
+        "trigger": "blur"
+      },
+      "show": true,
+      "send": true,
+      "number": null
+    },
+    {
+      "key": "enabled",
+      "name": {
+        "zh": "启用短信网关",
+        "en": "Enable SMS Gateway"
+      },
+      "type": "switch",
+      "readonly": false,
+      "disabled": false,
+      "placeholder": {
+        "zh": "启用后可以对短信模板进行内容自定义",
+        "en": "After enabling, you can customize the content of the SMS template"
+      },
+      "description": {
+        "zh": "启用短信网关",
+        "en": "Enable SMS Gateway"
+      },
+      "rules": {
+        "required": false,
+        "message": {
+          "zh": "启用后可以对短信模板进行内容自定义",
+          "en": "After enabling, you can customize the content of the SMS template"
+        },
+        "trigger": "blur"
+      },
+      "show": true,
+      "send": true,
+      "number": null
+    }
+  ]
+}
