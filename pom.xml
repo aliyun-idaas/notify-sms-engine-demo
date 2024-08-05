@@ -3,62 +3,144 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.idsmanager.notify</groupId>
-    <artifactId>notify-sms-engine-demo</artifactId>
+    <artifactId>notify-sms-plugin-demo</artifactId>
     <version>1.0.0</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <test.skip>false</test.skip>
+        <notify-core.version>4.22.0</notify-core.version>
     </properties>
 
     <dependencies>
+            <!--   必须依赖的Notify核心包     -->
         <dependency>
             <groupId>com.idsmanager.notify</groupId>
             <artifactId>notify-sms-local</artifactId>
-            <version>4.11.0</version>
+            <version>${notify-core.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <groupId>com.idsmanager.notify</groupId>
-            <artifactId>notify-core</artifactId>
-            <version>4.11.0</version>
-            <scope>provided</scope>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
+            <scope>test</scope>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt</artifactId>-->
+<!--            <version>0.9.0</version>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.idsmanager.notify</groupId>
-            <artifactId>notify-api</artifactId>
-            <version>4.11.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.json-lib</groupId>
-            <artifactId>json-lib</artifactId>
-            <version>2.3</version>
-            <classifier>jdk15</classifier>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
-    <repositories>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <skip>${test.skip}</skip>
+                    <forkMode>none</forkMode>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+        <!--      如果没有用到第三方包，可以注释下面的插件，打包的jar只包含插件的本身代码，不会生成包含jar-with-plugin的文件      -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>${basedir}/src/main/assembly/assembly-plugin.xml</descriptor>
+                    </descriptors>
+                    <descriptorRefs>
+                        <descriptorRef>
+                            jar-with-dependencies
+                        </descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+                <excludes>
+                    <!--exclude file list-->
+                    <!--<exclude>database.properties</exclude>-->
+                </excludes>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </testResource>
+        </testResources>
+
+    </build>
+
+    <distributionManagement>
         <repository>
-            <id>basedir</id>
-            <url>file://${project.basedir}/lib/</url>
+            <id>releases</id>
+            <url>http://11.158.133.57:8081/repository/maven-releases/</url>
         </repository>
-        <repository>
-            <id>aliyun</id>
-            <url>https://maven.aliyun.com/repository/public</url>
-        </repository>
-    </repositories>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>http://11.158.133.57:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!--    定义basedir 的仓库，URL是 ${project.basedir}/lib
+    如果需要依赖二方包或者三方包maven仓库无法下载，可以打开注释，把依赖包拷贝到lib目录下,jar拷贝格式需要遵循
+    /groupId/artifactId/version/artifactId-verion.jar -->
+<!--        <repositories>-->
+<!--            <repository>-->
+<!--                <id>basedir</id>-->
+<!--                <url>file://${project.basedir}/lib/</url>-->
+<!--            </repository>-->
+<!--            <repository>-->
+<!--                <id>aliyun</id>-->
+<!--                <url>https://maven.aliyun.com/repository/public</url>-->
+<!--            </repository>-->
+<!--        </repositories>-->
 </project>
