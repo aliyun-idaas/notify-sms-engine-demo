@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Jul 31 15:57:24 CST 2024
+notify-sms-local-4.22.0.jar>=
+notify-sms-local-4.22.0.pom>=
