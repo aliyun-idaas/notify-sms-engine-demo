@@ -1,6 +1,11 @@
 # Notify-短信网关-Demo
 IDP4 Notify 短信集成 demo 参考。
 
+## 版本说明  
+
+main 分支支持IDP 4.22.0以后的版本  
+v4.22.0-old 分支支持IDP 4.22.0以前的版本
+
 开源协议：[GPL-3.0 License](https://github.com/aliyun-idaas/notify-sms-engine-demo/blob/master/LICENSE) 。
 
 ## 开发环境要求
